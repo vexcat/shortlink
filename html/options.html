@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Multiple Choices</title>
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+      h1 {
+        margin-top: 0px;
+      }
+      li span {
+        min-width: 200px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Multiple Choices</h1>
+    <span id="filter"></span>
+    <ul>
+    </ul>
+    <p>Use tab to change focus on list, enter to select.</p>
+    <p>Or, start typing to change the filter.</p>
+    <script src="jquery.js"></script>
+    <script>
+      const common = /[^?]*\?(.*)/.exec(window.location.href)[1];
+      $.ajax({
+        url: '/options/' + common,
+        dataType: 'json'
+      }).done(data => {
+        for(let pair of data) {
+          $('ul').append($('<li>').append($('<span>').text(pair[0])).append($('<a>').attr('href', pair[1]).text(pair[1])));
+        }
+        $('li').first().find('a').focus();
+        $('#filter').text(common);
+        $(window).keydown(e => {
+          let t = $('#filter').text();
+          if(e.key.length === 1) {
+            t += e.key;
+          } else if(e.key === "Backspace") {
+            t = t.substr(0, t.length - 1);
+          } else {
+            return;
+          }
+          $('#filter').text(t);
+          filter(t);
+        });
+      });
+      function filter(text) {
+        $('ul').children().each(function() {  
+          if($(this).find('span').text().startsWith(text)) {
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
+        });
+        $('li:visible').first().find('a').focus();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shortlink</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div id="content-wrap">
+    <header>
+      <h1>My Shortlinking Daemon</h1>
+    </header>
+    <form action="/" method="POST">
+      <fieldset id="make-a-link">
+        <legend>
+          Make a Link
+        </legend>
+        From <input type="text" name="from"><br>
+        <div style="clear: both; height: 8px"></div>
+        To <input type="text" name="to"><br>
+        <input style="display: none" name="action" value="create">
+        <div style="clear: both; height: 8px"></div>
+        <input type="submit" class="submit" value="Make a Link!">
+      </fieldset>
+    </form>
+    <fieldset id="active-links" style="display: none">
+      <legend>Active Links</legend>
+      <hr>
+      <div class="link-template" style="display: none">
+        <span style="width: 200px; display: inline-block"><a class="link-display-from" href="/place">i/place</a></span>
+        <a class="link-display-to" href="https://ungato.tk/">https://ungato.tk/</a>
+        <span style="float: right">
+            <a href="#" class="action-edit-link">Edit</a>
+            <a href="#" class="action-delete-link">Delete</a>
+          </span>
+          <hr style="margin: 0">
+        </div>
+        <form class="link-editor-template" action="/" method="POST" style="display: none">
+          <input style="display: none" name="old-name" class="editor-previous-name">
+          From <input type="text" name="from" class="editor-from"><br>
+          <div style="clear: both; height: 8px"></div>
+          To <input type="text" name="to" class="editor-to"><br>
+          <div style="clear: both; height: 8px"></div>
+        <input style="display: none" name="action" value="change">
+        <input type="submit" value="Edit" class="editor-yes">
+        <button onclick="editorclose(); return false" class="editor-no">Cancel</button>
+      </form>
+    </fieldset>
+  </div>
+  <footer>
+  </footer>
+  <script src="jquery.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>

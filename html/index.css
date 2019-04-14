@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+header {
+  background-color: dimgray;
+  padding: 0.5rem;
+}
+
+#make-a-link {
+  background-color: #EEFFFF;
+}
+
+#active-links {
+  background-color: #CCFFCC;
+}
+
+input {
+  width: calc( 100% - 80px );
+  float: right;
+}
+
+#make-a-link .submit {
+  width: 100%;
+}
+
+fieldset {
+  border-radius: 20px;
+  padding: 8px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+fieldset legend {
+  margin-left: 8px;
+}
+
+.link-editor-template {
+  margin-bottom: 8px;
+}
+
+.editor-yes {
+  width: calc( 50% - 4px );
+  float: none;
+}
+
+.editor-no {
+  width: calc( 50% - 4px );
+  float: right;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 2rem;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  height: 1rem;
+  padding: 0.5rem;
+}
+
+.link-template:hover {
+  background-color: white;
+}
