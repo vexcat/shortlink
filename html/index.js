@@ -6,9 +6,10 @@ $.ajax({
   const links = $('#active-links');
   const template = $('.link-template').first();
   const keys = Object.keys(data).sort((a, b) => a < b ? -1 : 1);
+  const host = location.host;
   for(let link of keys) {
     let clone = template.clone().show();
-    clone.find('.link-display-from').attr('href', 'http://i/' + link).text('i/' + link);
+    clone.find('.link-display-from').attr('href', '/' + link).text(host + '/' + link);
     clone.find('.link-display-to').attr('href', data[link]).text(data[link]);
     clone.find('.action-delete-link').click(function() {
       const form = $(`<form action="/" method="POST">
