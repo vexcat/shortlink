@@ -32,7 +32,9 @@ app.get('/options/:link', (req, res) => {
 
 app.get('/:link', (req, res) => {
   const pairs = options(req.params.link);
-  if(pairs.length === 1) {
+  if(data[req.params.link]) {
+    res.redirect(data[req.params.link]);
+  } else if(pairs.length === 1) {
     res.redirect(pairs[0][1]);
   } else if(pairs.length >= 1) {
     res.redirect('/options?' + encodeURIComponent(req.params.link));
