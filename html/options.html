@@ -24,9 +24,9 @@
     <p>Or, start typing to change the filter.</p>
     <script src="jquery.js"></script>
     <script>
-      const common = /[^?]*\?(.*)/.exec(window.location.href)[1];
+      const common = decodeURIComponent(/[^?]*\?(.*)/.exec(window.location.href)[1]);
       $.ajax({
-        url: '/options/' + common,
+        url: '/options/' + encodeURIComponent(common),
         dataType: 'json'
       }).done(data => {
         for(let pair of data) {
